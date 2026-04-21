@@ -51,9 +51,17 @@
   font-size: 13px;
 }
 
+#qt-tooltip .qt-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-right: 18px;
+}
+
 #qt-tooltip .qt-result {
   color: #1a1a1a;
   word-break: break-word;
+  flex: 1;
 }
 
 #qt-tooltip .qt-truncated {
@@ -66,7 +74,7 @@
 #qt-tooltip .qt-speaker {
   cursor: pointer;
   font-size: 14px;
-  vertical-align: text-bottom;
+  flex-shrink: 0;
   filter: grayscale(100%) opacity(60%);
   transition: all 0.2s;
   user-select: none;

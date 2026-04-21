@@ -23,6 +23,10 @@ var lastTranslatedText = "";
 document.addEventListener("keydown", function (event) {
   if (event.code === "ControlLeft") {
     isCtrlPressed = true;
+  } else if (event.code === "Escape") {
+    if (tooltipEl) {
+      removeTooltip();
+    }
   } else if (event.code === "Space" && isCtrlPressed && !isTranslating && selectedText) {
     event.preventDefault();
     if (selectedText === lastTranslatedText) return;
@@ -154,14 +158,17 @@ function updateTooltip(result, truncated) {
   }
 
   if (result.success) {
+    var rowEl = document.createElement("div");
+    rowEl.className = "qt-row";
+
     var resultEl = document.createElement("span");
     resultEl.className = "qt-result";
     resultEl.textContent = result.translation;
-    tooltipEl.appendChild(resultEl);
+    rowEl.appendChild(resultEl);
 
     var speakerEl = document.createElement("span");
     speakerEl.className = "qt-speaker";
-    speakerEl.textContent = " 🔊";
+    speakerEl.textContent = "🔊";
     speakerEl.title = "朗讀原文";
     speakerEl.addEventListener("click", function (e) {
       e.stopPropagation();
@@ -170,7 +177,8 @@ function updateTooltip(result, truncated) {
       msg.lang = 'en-US';
       window.speechSynthesis.speak(msg);
     });
-    tooltipEl.appendChild(speakerEl);
+    rowEl.appendChild(speakerEl);
+    tooltipEl.appendChild(rowEl);
 
     if (truncated) {
       var note = document.createElement("div");
