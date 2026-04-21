@@ -1,0 +1,97 @@
+#qt-tooltip * {
+  all: revert;
+}
+
+#qt-tooltip {
+  position: absolute;
+  z-index: 2147483647;
+  max-width: 320px;
+  min-width: 160px;
+  background: #ffffff;
+  color: #1a1a1a;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  padding: 12px 14px;
+  font-size: 14px;
+  line-height: 1.6;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  animation: qt-fadein 0.15s ease;
+}
+
+@keyframes qt-fadein {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+#qt-tooltip .qt-close {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #999;
+  line-height: 1;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+#qt-tooltip .qt-close:hover {
+  color: #333;
+}
+
+#qt-tooltip .qt-loading {
+  color: #888;
+  font-style: italic;
+}
+
+#qt-tooltip .qt-error {
+  color: #d32f2f;
+  font-size: 13px;
+}
+
+#qt-tooltip .qt-result {
+  color: #1a1a1a;
+  word-break: break-word;
+}
+
+#qt-tooltip .qt-truncated {
+  color: #888;
+  font-size: 12px;
+  margin-top: 6px;
+  font-style: italic;
+}
+
+#qt-tooltip .qt-speaker {
+  cursor: pointer;
+  font-size: 14px;
+  vertical-align: text-bottom;
+  filter: grayscale(100%) opacity(60%);
+  transition: all 0.2s;
+  user-select: none;
+}
+
+#qt-tooltip .qt-speaker:hover {
+  filter: none;
+  transform: scale(1.1);
+  display: inline-block;
+}
+
+@media (prefers-color-scheme: dark) {
+  #qt-tooltip {
+    background: #2c2c2c;
+    color: #e0e0e0;
+    border-color: #444;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  }
+  #qt-tooltip .qt-result {
+    color: #e0e0e0;
+  }
+  #qt-tooltip .qt-close {
+    color: #aaa;
+  }
+  #qt-tooltip .qt-close:hover {
+    color: #eee;
+  }
+}
