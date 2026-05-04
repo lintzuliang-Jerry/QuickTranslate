@@ -16,18 +16,17 @@ document.addEventListener("mouseup", function (event) {
   }
 }, true);
 
-var isCtrlPressed = false;
-var otherKeyPressed = false;
 var lastTranslatedText = "";
 
 document.addEventListener("keydown", function (event) {
-  if (event.code === "ControlLeft") {
-    isCtrlPressed = true;
-  } else if (event.code === "Escape") {
+  // 注音/中文輸入法正在組字時，完全忽略
+  if (event.isComposing) return;
+
+  if (event.code === "Escape") {
     if (tooltipEl) {
       removeTooltip();
     }
-  } else if (event.code === "Space" && isCtrlPressed && !isTranslating && selectedText) {
+  } else if (event.code === "Space" && event.ctrlKey && !isTranslating && selectedText) {
     event.preventDefault();
     if (selectedText === lastTranslatedText) return;
 
@@ -72,13 +71,6 @@ document.addEventListener("keydown", function (event) {
       isTranslating = false;
       updateTooltip({ success: false, error: "無法聯繫背景程式，請重整這頁。" }, false);
     }
-  }
-}, true);
-
-document.addEventListener("keyup", function (event) {
-  if (event.code === "ControlLeft") {
-    isCtrlPressed = false;
-    otherKeyPressed = false;
   }
 }, true);
 
