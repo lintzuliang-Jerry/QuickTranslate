@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "QuickTranslate",
   "version": "1.0.0",
-  "description": "框選英文文字，按 Ctrl 即時翻譯為繁體中文",
+  "description": "框選英文文字，按 Ctrl + Space 即時翻譯為繁體中文",
   "permissions": [],
   "host_permissions": [
     "https://api.mymemory.translated.net/*"

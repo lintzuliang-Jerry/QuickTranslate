@@ -5,3 +5,8 @@ Thumbs.db
 # Editor
 .vscode/
 *.swp
+
+# Local files
+.env
+.env.*
+*.log
